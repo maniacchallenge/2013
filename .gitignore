@@ -1,0 +1,9 @@
+.metadata
+bin/**
+.project
+.class
+
+# MAC OS
+*/.DS_Store
+*/._*
+
