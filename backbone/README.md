@@ -3,7 +3,7 @@
 - [protobuf](https://pypi.python.org/pypi/protobuf/2.5.0)
 
 # Usage
-to start, simply type ``python protobuf.py``
+to start, simply type ``python backbone.py``
 
 # What it does
 The task of all backbones is to start auctions and report all traffic they notice to the master. To accomplish this, they maintain >= 3 connections:
