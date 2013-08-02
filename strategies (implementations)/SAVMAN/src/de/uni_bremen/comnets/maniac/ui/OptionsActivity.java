@@ -22,6 +22,7 @@ public class OptionsActivity extends Activity {
     public static final String OPTION_PARTNER_IP = "PARTNER_IP";
     public static final String OPTION_DROPPING_THRESHOLD = "DROPPING_THRESHOLD";
     public static final String OPTION_TRY_UNKNOWN_ADVERTS = "TRY_UNKNOWN_ADVERTS";
+    public static final String OPTION_BID_ON_EVERYTHING = "BID_ON_EVERYTHING";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class OptionsActivity extends Activity {
         commitTryUnknownAdvertsButton.setOnClickListener(commitTryUnknownAdvertsClickListener);
 
         CheckBox bidOnEverythingCheckBox = (CheckBox)findViewById(R.id.chk_bid_on_everything);
-        bidOnEverythingCheckBox.setChecked(getSharedPreferences(Maniac.SHARED_PREFERENCES_NAME, 0).getBoolean(Strategy.OPTION_BID_ON_EVERYTHING, false));
+        bidOnEverythingCheckBox.setChecked(getSharedPreferences(Maniac.SHARED_PREFERENCES_NAME, 0).getBoolean(OPTION_BID_ON_EVERYTHING, false));
 
         Button commitBidOnEverythingButton = (Button)findViewById(R.id.btn_bid_on_everything);
         commitBidOnEverythingButton.setOnClickListener(commitBidOnEverythingClickListener);
@@ -127,8 +128,8 @@ public class OptionsActivity extends Activity {
             CheckBox bidOnEverythingCheckBox = (CheckBox)findViewById(R.id.chk_bid_on_everything);
             boolean bidOnEverything = bidOnEverythingCheckBox.isChecked();
             SharedPreferences preferences = getSharedPreferences(Maniac.SHARED_PREFERENCES_NAME, 0);
-            if (bidOnEverything != preferences.getBoolean(Strategy.OPTION_BID_ON_EVERYTHING, false)) {
-                preferences.edit().putBoolean(Strategy.OPTION_BID_ON_EVERYTHING, bidOnEverything).apply();
+            if (bidOnEverything != preferences.getBoolean(OPTION_BID_ON_EVERYTHING, false)) {
+                preferences.edit().putBoolean(OPTION_BID_ON_EVERYTHING, bidOnEverything).apply();
                 Toast.makeText(OptionsActivity.this, "Successfully set Bid On Everything: " + bidOnEverything, Toast.LENGTH_SHORT).show();
             }
             else {

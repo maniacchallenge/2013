@@ -21,6 +21,7 @@ import de.uni_bremen.comnets.maniac.collections.Predicates;
 import de.uni_bremen.comnets.maniac.dummies.DummyAdvert;
 import de.uni_bremen.comnets.maniac.log.ResultTracer;
 import de.uni_bremen.comnets.maniac.log.Tracer;
+import de.uni_bremen.comnets.maniac.ui.OptionsActivity;
 import de.uni_bremen.comnets.maniac.util.MutableInteger;
 
 /**
@@ -33,7 +34,6 @@ public class Strategy implements ManiacStrategyInterface {
 
 	private Brain brain;
     private Maniac maniac;
-    public static final String OPTION_BID_ON_EVERYTHING = "BID_ON_EVERYTHING";
 
     private final long AUCTION_TIMEOUT = Brain.getAuctionTimeout();
     private static final long AUCTION_TIMEOUT_BUFFER = 500;
@@ -47,8 +47,6 @@ public class Strategy implements ManiacStrategyInterface {
 
         t.finish();
 	}
-
-    // TODO: Make sure the Brain is notified about everything.
 	
 	@Override
 	public Long onRcvAdvert(Advert adv) {
@@ -62,7 +60,7 @@ public class Strategy implements ManiacStrategyInterface {
         }
         else {
             brain.addFocus(adv);
-            if (maniac.getSharedPreferences(Maniac.SHARED_PREFERENCES_NAME, 0).getBoolean(OPTION_BID_ON_EVERYTHING, false)) {
+            if (maniac.getSharedPreferences(Maniac.SHARED_PREFERENCES_NAME, 0).getBoolean(OptionsActivity.OPTION_BID_ON_EVERYTHING, false)) {
                 return t.finish(AUCTION_TIMEOUT - AUCTION_TIMEOUT_BUFFER);
             }
             else {
@@ -121,6 +119,7 @@ public class Strategy implements ManiacStrategyInterface {
         try {
             // TODO: validate bids
             // TODO: if there are no bids, check if it would be beneficial to give it to the backbone, and if not, drop the packet
+            // (Currently, it's always giving it to the backbone)
             if (bids.isEmpty()) {
                 brain.onWinnerSelected(null, transactionID);
                 return t.finish(null);
@@ -163,7 +162,7 @@ public class Strategy implements ManiacStrategyInterface {
             }
             return t.finish(result.equals(nullBid) ? null : result);
         }
-        catch (RuntimeException ex) {
+        catch (RuntimeException ex) { // I don't think this happens anymore, but I could be completely wrong :)
             ex.printStackTrace();
             brain.onWinnerSelected(bids.get(0), transactionID);
             return t.finish(bids.get(0));
