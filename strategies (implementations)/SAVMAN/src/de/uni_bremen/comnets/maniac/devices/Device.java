@@ -368,12 +368,6 @@ public class Device implements BiddingOpponent, Consumer {
 
     @Override
     public String toString() {
-        if (address == null) {
-            Log.wtf(TAG, "The device's address is null??");
-        }
-        else if (address.toString() == null) {
-            Log.wtf(TAG, "The device's address's toString method returns null?");
-        }
         return address.toString().substring(1);
     }
 

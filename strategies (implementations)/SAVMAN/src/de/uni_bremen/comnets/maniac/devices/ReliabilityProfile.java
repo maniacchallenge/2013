@@ -27,6 +27,7 @@ public class ReliabilityProfile {
         this.device = device;
 
         this.possibleImplementations.add(new MaliciousProfile());
+        this.possibleImplementations.add(new AngelicProfile());
         this.possibleImplementations.add(new BackboneProfile());
         this.possibleImplementations.add(new PracticalReliabilityProfile());
         this.possibleImplementations.add(new BetterPracticalReliabilityProfile());
