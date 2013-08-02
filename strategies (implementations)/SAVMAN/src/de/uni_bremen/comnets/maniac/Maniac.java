@@ -103,7 +103,7 @@ public class Maniac extends Application {
     public void onDestroy() {
         wakeLock.release();
         brain.interrupt();
-        mothership.interrupt(); // Ouch...
+        mothership.interrupt(); // NOTE: we slightly modified the API so we didn't have to use mothership.stop().
     }
 
     public Brain getBrain() {

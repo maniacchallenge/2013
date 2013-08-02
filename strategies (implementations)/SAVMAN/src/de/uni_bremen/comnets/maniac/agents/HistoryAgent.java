@@ -499,6 +499,7 @@ public class HistoryAgent extends Agent {
                         return;
                     }
 
+                    // NOTE: This doesn't appear to work, since node's balances never seem to get updated in the UI.
                     if (includesUs) {
                         Integer diff = null;
                         for (int i = 10; i > 0; --i) { // Try 10 times to get the bank info for this transaction.
