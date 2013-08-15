@@ -103,8 +103,7 @@ public class BankManager {
 	 * @param check
 	 *            Check-packet with the new balance information
 	 */
-	
-	// TODO test me thoroughly.
+
 	public void update(Check check) {
 			int oldDifference = lastDifference;
 			

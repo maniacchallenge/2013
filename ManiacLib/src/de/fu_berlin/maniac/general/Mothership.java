@@ -177,7 +177,6 @@ public class Mothership extends Thread {
 				try {
 					mlogger.sendToLogger(buffer_packet);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 	
