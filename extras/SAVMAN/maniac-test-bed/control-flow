@@ -1,0 +1,106 @@
+#!/bin/bash
+
+NODE=$1
+OP=$2
+
+echo "$NODE $OP"
+ 
+NEXUSUHBMAC="50:46:5d:80:e7:6b"
+NEXUSTUHHMAC="08:60:6e:9c:c7:ef"
+MESSINAMAC="00:26:82:3e:37:4f"
+TRENTOMAC="00:26:82:3e:38:eb"
+ROMAMAC="00:26:82:3d:f3:b7"
+MILANOMAC="00:26:82:3e:37:3b"
+MODENAMAC="00:26:82:3d:f4:09"
+MARSALAMAC="00:26:82:3e:36:6a"
+
+# for nexusuhb
+if [ "$NODE" == "nexusuhb" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $NEXUSUHBMAC -j DROP
+fi
+if [ "$NODE" == "nexusuhb" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $NEXUSUHBMAC -j ACCEPT
+fi
+
+# for nexus7tuhh
+if [ "$NODE" == "nexustuhh" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $NEXUSTUHHMAC -j DROP
+fi
+if [ "$NODE" == "nexustuhh" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $NEXUSTUHHMAC -j ACCEPT
+fi
+
+# for messina
+if [ "$NODE" == "messina" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $MESSINAMAC -j DROP
+fi
+if [ "$NODE" == "messina" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $MESSINAMAC -j ACCEPT
+fi
+
+# for trento
+if [ "$NODE" == "trento" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $TRENTOMAC -j DROP
+fi
+if [ "$NODE" == "trento" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $TRENTOMAC -j ACCEPT
+fi
+
+# for roma
+if [ "$NODE" == "roma" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $ROMAMAC -j DROP
+fi
+if [ "$NODE" == "roma" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $ROMAMAC -j ACCEPT
+fi
+
+# for milano
+if [ "$NODE" == "milano" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $MILANOMAC -j DROP
+fi
+if [ "$NODE" == "milano" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $MILANOMAC -j ACCEPT
+fi
+
+# for modena
+if [ "$NODE" == "modena" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $MODENAMAC -j DROP
+fi
+if [ "$NODE" == "modena" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $MODENAMAC -j ACCEPT
+fi
+
+# for marsala
+if [ "$NODE" == "marsala" ] && [ "$OP" == "drop" ]
+then
+	iptables -A INPUT -m mac --mac-source $MARSALAMAC -j DROP
+fi
+if [ "$NODE" == "marsala" ] && [ "$OP" == "accept" ]
+then
+	iptables -A INPUT -m mac --mac-source $MARSALAMAC -j ACCEPT
+fi
+
+if [ "$NODE" == "clear" ]
+then
+	iptables -F
+fi
+
+if [ "$NODE" == "show" ]
+then
+	iptables --list INPUT -n
+fi
+

@@ -1,0 +1,22 @@
+
+Introduction
+------------
+
+This is simple pcap based program to sniff Maniac Challenge 2013 related packets in a network to monitor the operations. It does the following.
+
+- Dumps the information of the different Maniac Challenge packets (ADVERT, BID, BIDWIN & DATA)
+- Computes & dumps the balances of each IP address
+
+
+Compilation
+----------- 
+
+make linux
+
+
+Running
+-------
+
+./maniac-sniffer-linux eth1
+
+where eth1 is the network interface connected to the OLSR network

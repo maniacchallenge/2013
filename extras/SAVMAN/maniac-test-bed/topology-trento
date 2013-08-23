@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./control-flow nexustuhh drop
+./control-flow roma drop
+./control-flow messina drop
+./control-flow milano drop
+./control-flow show
+

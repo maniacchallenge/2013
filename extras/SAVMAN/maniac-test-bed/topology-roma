@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./control-flow trento drop
+./control-flow nexusuhb drop
+./control-flow marsala drop
+./control-flow nexustuhh drop
+./control-flow show
+
