@@ -12,7 +12,7 @@ The specific focus of the MANIAC Challenge 2013 is on developing and comparative
 - For the ``Backbones``, we used between 8 and 23 nodes of the [DES-testbed](http://des-testbed.net/). All Backbone routers were connected to one central server, the ``Master``. Tha Master tols the Backbones to announce traffic and logged every packet the Backbones picked up.
 - As ``Clients``, we used [Google's Nexus 7](http://www.google.com/nexus/7/) tablets running Android 4.2.1. 
 
-# software and programming languages
+# Software and Programming Languages
 
 We used Google's [ProtocolBuffer](http://code.google.com/p/protobuf/) to serialize the data that is sent between Backbones and Clients.  
 The actual routing was done by [OLSRd](http://www.olsr.org), the daemon for the [Optimized Link State Routing Protocol](http://en.wikipedia.org/wiki/Optimized_Link_State_Routing_Protocol).
@@ -24,7 +24,7 @@ The Eclipse project contains a file called ``protoPackets.proto`` in its ``/src`
 ### Setting up your Tablets
 
 To get the ad-hoc mode running on the Nexus 7, you first have to install [CyanogenMod](http://www.cyanogenmod.org/), then build your [own Kernel](http://source.android.com/source/building-kernels.html) and finally install the [ManetManager](https://github.com/ProjectSPAN/android-manet-manager), written by the [SPAN-Team](https://groups.google.com/forum/#!forum/spandev), but you have to [root your device](https://www.google.de/search?output=search&sclient=psy-ab&q=root%20cyanogenmod%20nexus%207&=&=&oq=&gs_l=&pbx=1) to use it.
-And finally, you have to write an [App](http://developer.android.com) which uses the API. We provided a very simple dummy app, so can get an idea of how it can look like/work.
+And finally, you have to write an [App](http://developer.android.com) which uses the API. We provided a very simple dummy app, so you can get an idea of how it can look like/work.
 
 ## Backbones
 The task of all backbones is to start auctions and report all traffic they notice to the master. To accomplish this, they maintain >= 3 connections:
