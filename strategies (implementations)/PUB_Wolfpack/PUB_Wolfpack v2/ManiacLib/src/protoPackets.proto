@@ -1,0 +1,68 @@
+package de.fu_berlin.maniac.packet_builder;
+
+// syntax = "proto2";
+// nicht vergessen: fuer negative Zahlen sint32/sint64 benutzen!
+
+// "central" packet which can be extended to all defined packet types.
+// yes, this is kind of an inheritance-hack.
+message PacketMessage{
+	enum packetType {
+		ADVERT = 0;
+		BID = 1;
+		BIDWIN = 2;
+		CHECK = 3;
+		DATA = 4;
+		GENERALPURPOSE = 5;
+	}
+	required packetType type = 1;
+	required int32 transactionID = 2;
+
+	optional AdvertMessage advertMessage = 4;
+	optional BidMessage bidMessage = 5;
+	optional BidWinMessage bidWinMessage = 6;
+	optional CheckMessage checkMessage = 7;
+	optional DataMessage dataMessage = 8;
+	optional GeneralPurposeMessage generalPurposeMessage = 9;
+}
+
+message AdvertMessage{
+	required string finalDestinationIP = 3; // BBN router where the advertised packet has to end up at
+	required int32 ceil = 4;              // Maximum cost
+	required int32 deadline = 5;          // hops left
+	required int32 fine = 6;			  // fine
+	required int32 initialBudget = 7;     // initial budget for the transmission
+										  // (also the fine for retransmission via BBN)
+}
+
+message BidMessage {
+	required int32 bid = 4;
+}
+
+message BidWinMessage {
+	required string winnerIP = 4;		  // Is there a reason this isn't called destinationIP?
+	required int32 winningBid = 5;
+	required int32 fine = 6;
+}
+
+message CheckMessage {
+	message BalanceUpdateMessage{
+		required int32 transactionID = 1;
+		required sint32 amount = 2;
+	}
+
+	required sint32 newBalance = 5;       // new overall balance of the team
+	repeated BalanceUpdateMessage balanceUpdates = 6;   // holds a list of balanceUpdateMessages
+}
+
+message DataMessage {
+	required string finalDestinationIP = 4; // BBN router where this packet has to end up at
+	required int32 deadline = 5;			// hops left
+	required int32 fine = 7;
+	required int32 initialBudget = 8;       // initial budget for the transmission
+										    // (also the fine for retransmission via BBN)
+	required string payload = 9;
+}
+
+message GeneralPurposeMessage {
+	required string message = 1;
+}

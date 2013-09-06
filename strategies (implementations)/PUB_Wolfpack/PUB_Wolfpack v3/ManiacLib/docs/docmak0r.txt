@@ -1,0 +1,1 @@
+javadoc -sourcepath ../src/ com.example.maniaclib de.fu_berlin.maniac.auction_manager de.fu_berlin.maniac.bank de.fu_berlin.maniac.connection_manager de.fu_berlin.maniac.exception de.fu_berlin.maniac.general de.fu_berlin.maniac.network_manager de.fu_berlin.maniac.packet_builder de.fu_berlin.maniac.strategies net.commotionwireless.olsrinfo net.commotionwireless.olsrinfo.datatypes
