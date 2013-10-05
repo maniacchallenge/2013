@@ -1,0 +1,19 @@
+HTTP/1.0 200 OK
+Content-type: text/plain
+Table: Links
+Local IP	Remote IP	Hyst.	LQ	NLQ	Cost
+10.10.0.119	10.10.0.152	0.00	1.000	1.000	
+Table: Neighbors
+IP address	SYM	MPR	MPRS	Will.	2 Hop Neighbors
+10.10.0.152	YES	NO	NO	6	0
+Table: Topology
+Dest. IP	Last hop IP	LQ	NLQ	Cost
+10.10.0.152	10.10.0.119	1.000	1.000
+10.10.0.119	10.10.0.152	1.000	1.000
+Table: HNA
+Destination	Gateway
+Table: MID
+IP address	Aliases
+Table: Routes
+Destination	Gateway IP	Metric	ETX	Interface
+10.10.0.152/32	10.10.0.152	1	1.000	br0	
